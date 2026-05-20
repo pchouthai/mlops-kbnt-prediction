@@ -1,0 +1,25 @@
+name: Kubernetes Monitor
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+          chmod +x kubectl
+
+          sudo mv kubectl /usr/local/bin/
+
+      - name: Verify kubectl Installation
+        run: kubectl version --client
+
+      - name: Monitoring Placeholder
+        run: echo "Kubernetes monitoring workflow executed successfully"
