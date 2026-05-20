@@ -1,10 +1,9 @@
-# mlops-kbnt-prediction
 Machine Learning Pipeline using GitHub Actions
 Project Title
-Customer Churn Prediction System using MLOps Pipeline with GitHub Actions
+Flight Details Prediction System using MLOps Pipeline with GitHub Actions
 ________________________________________
 Project Overview
-This project implements an end-to-end MLOps pipeline for customer churn prediction using GitHub Actions, Docker, Flask API, and Kubernetes deployment.
+This project implements an end-to-end MLOps pipeline for Flight Details prediction using GitHub Actions, Docker, Flask API, and Kubernetes deployment.
 The system automates:
 •	Data preprocessing
 •	Model training
@@ -13,8 +12,8 @@ The system automates:
 •	Continuous Training (CT)
 •	Kubernetes deployment
 •	Monitoring workflows
-The application predicts whether a customer is likely to churn based on historical customer data.
-________________________________________
+The application predicts whether a flight is likely to delay based on historical flight
+data.
 Architecture
 The project architecture follows the MLOps lifecycle:
 Dataset
@@ -62,7 +61,7 @@ ________________________________________
 Setup Steps
 1. Clone Repository
 git clone <repository-url>
-cd mlops-churn-prediction
+cd mlops-kbnt-prediction
 ________________________________________
 2. Create Virtual Environment
 python -m venv venv
@@ -82,10 +81,10 @@ python app.py
 ________________________________________
 Docker Setup
 Build Docker Image
-docker build -t churn-api .
+docker build -t kbnt-api .
 ________________________________________
 Run Docker Container
-docker run -p 5000:5000 churn-api
+docker run -p 5000:5000 kbnt-api
 ________________________________________
 GitHub Actions Workflows
 Workflow	Purpose
@@ -124,16 +123,8 @@ Example JSON request:
 }
 Example response:
 {
-  "prediction": "Churn"
+  "prediction": "Kbnt_flight"
 }
-________________________________________
-Screenshots (Optional)
-Recommended screenshots:
-•	GitHub Actions workflows
-•	Docker image build
-•	Kubernetes deployment
-•	Flask API running
-•	Repository structure
 ________________________________________
 Conclusion
 This project demonstrates a complete MLOps implementation using:
