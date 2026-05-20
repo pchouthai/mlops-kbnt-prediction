@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: kbnt-api-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: kbnt-api
+
+  template:
+    metadata:
+      labels:
+        app: kbnt-api
+
+    spec:
+      containers:
+      - name: kbnt-api
+        image: kbnt-api
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: 5000
