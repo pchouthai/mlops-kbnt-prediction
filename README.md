@@ -1,10 +1,10 @@
 # mlops-kbnt-prediction
 Machine Learning Pipeline using GitHub Actions
 Project Title
-Customer Churn Prediction System using MLOps Pipeline with GitHub Actions
+Flight Duration Prediction System using MLOps Pipeline with GitHub Actions
 ________________________________________
 Project Overview
-This project implements an end-to-end MLOps pipeline for customer churn prediction using GitHub Actions, Docker, Flask API, and Kubernetes deployment.
+This project implements an end-to-end MLOps pipeline for flight duration prediction using GitHub Actions, Docker, Flask API, and Kubernetes deployment.
 The system automates:
 •	Data preprocessing
 •	Model training
@@ -13,7 +13,7 @@ The system automates:
 •	Continuous Training (CT)
 •	Kubernetes deployment
 •	Monitoring workflows
-The application predicts whether a customer is likely to churn based on historical customer data.
+The application predicts what will be the flight duration based on distance.
 ________________________________________
 Architecture
 The project architecture follows the MLOps lifecycle:
@@ -45,7 +45,7 @@ Kubernetes	Deployment
 GitHub Codespaces	Development Environment
 ________________________________________
 Repository Structure
-mlops-churn-prediction/
+mlops-kbnt-prediction/
 │
 ├── .github/workflows/
 ├── data/raw/
@@ -62,7 +62,7 @@ ________________________________________
 Setup Steps
 1. Clone Repository
 git clone <repository-url>
-cd mlops-churn-prediction
+cd mlops-kbnt-prediction
 ________________________________________
 2. Create Virtual Environment
 python -m venv venv
@@ -82,10 +82,10 @@ python app.py
 ________________________________________
 Docker Setup
 Build Docker Image
-docker build -t churn-api .
+docker build -t kbnt-api .
 ________________________________________
 Run Docker Container
-docker run -p 5000:5000 churn-api
+docker run -p 5000:5000 kbnt-api
 ________________________________________
 GitHub Actions Workflows
 Workflow	Purpose
@@ -113,27 +113,6 @@ Branch	Purpose
 main	Production-ready code
 feature/*	Feature development
 Feature branches are merged into the main branch after validation through GitHub Actions workflows.
-________________________________________
-API Endpoint
-Predict Endpoint
-POST /predict
-Example JSON request:
-{
-  "feature1": 10,
-  "feature2": 20
-}
-Example response:
-{
-  "prediction": "Churn"
-}
-________________________________________
-Screenshots (Optional)
-Recommended screenshots:
-•	GitHub Actions workflows
-•	Docker image build
-•	Kubernetes deployment
-•	Flask API running
-•	Repository structure
 ________________________________________
 Conclusion
 This project demonstrates a complete MLOps implementation using:
