@@ -1,9 +1,9 @@
 Machine Learning Pipeline using GitHub Actions
 Project Title
-Flight Details Prediction System using MLOps Pipeline with GitHub Actions
+Flight Duration Prediction System using MLOps Pipeline with GitHub Actions
 ________________________________________
 Project Overview
-This project implements an end-to-end MLOps pipeline for Flight Details prediction using GitHub Actions, Docker, Flask API, and Kubernetes deployment.
+This project implements an end-to-end MLOps pipeline for flight duration prediction using GitHub Actions, Docker, Flask API, and Kubernetes deployment.
 The system automates:
 •	Data preprocessing
 •	Model training
@@ -12,8 +12,8 @@ The system automates:
 •	Continuous Training (CT)
 •	Kubernetes deployment
 •	Monitoring workflows
-The application predicts whether a flight is likely to delay based on historical flight
-data.
+The application predicts what will be the flight duration based on distance.
+________________________________________
 Architecture
 The project architecture follows the MLOps lifecycle:
 Dataset
@@ -44,7 +44,7 @@ Kubernetes	Deployment
 GitHub Codespaces	Development Environment
 ________________________________________
 Repository Structure
-mlops-churn-prediction/
+mlops-kbnt-prediction/
 │
 ├── .github/workflows/
 ├── data/raw/
@@ -112,19 +112,6 @@ Branch	Purpose
 main	Production-ready code
 feature/*	Feature development
 Feature branches are merged into the main branch after validation through GitHub Actions workflows.
-________________________________________
-API Endpoint
-Predict Endpoint
-POST /predict
-Example JSON request:
-{
-  "feature1": 10,
-  "feature2": 20
-}
-Example response:
-{
-  "prediction": "Kbnt_flight"
-}
 ________________________________________
 Conclusion
 This project demonstrates a complete MLOps implementation using:

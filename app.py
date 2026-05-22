@@ -1,67 +1,61 @@
 from flask import Flask, request, jsonify
-import joblib
 import pandas as pd
-import logging
-import datetime
+import joblib
 
 app = Flask(__name__)
 
-# Configure logging
-logging.basicConfig(
-    filename='logs/predictions.log',
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s'
-)
-
-# Load trained model
+# Load model
 model = joblib.load("models/model.pkl")
 
-# Home Route
+# Home route
 @app.route("/")
 def home():
-    return "ML API Running (KBNT)"
 
-# Health Check Endpoint for Monitoring
-@app.route("/health")
-def health():
-    return jsonify({
-        "status": "healthy",
-        "timestamp": str(datetime.datetime.now())
-    })
+    return """
+    <h1>Flight Duration Prediction API</h1>
 
-# Prediction Endpoint
+    <form action="/predict" method="post">
+
+        <label>Distance Travelled (KM):</label><br><br>
+
+        <input type="number" name="distance" required><br><br>
+
+        <input type="submit" value="Predict Flight Time">
+
+    </form>
+    """
+
+# Prediction route
 @app.route("/predict", methods=["POST"])
 def predict():
 
     try:
-        # Get JSON input
-        data = request.json
 
-        # Convert to DataFrame
-        input_df = pd.DataFrame([data])
+        distance = float(request.form["distance"])
 
-        # Make prediction
-        prediction = model.predict(input_df)[0]
-
-        # Log request and prediction
-        logging.info(
-            f"Input: {data}, Prediction: {prediction}"
-        )
-
-        # Return prediction
-        return jsonify({
-            "prediction": int(prediction)
+        input_df = pd.DataFrame({
+            "DistanceKM": [distance]
         })
+
+        prediction = model.predict(input_df)
+
+        predicted_hours = float(prediction[0])
+
+        return f"""
+        <h2>Predicted Flight Duration</h2>
+
+        <p>Distance: {distance} KM</p>
+
+        <p>Estimated Time: {round(predicted_hours, 2)} Hours</p>
+
+        <a href="/">Try Again</a>
+        """
 
     except Exception as e:
 
-        logging.error(f"Prediction Error: {str(e)}")
+        return f"Error: {str(e)}"
 
-        return jsonify({
-            "error": str(e)
-        }), 500
-
-# Run Flask App
+# Run app
 if __name__ == "__main__":
 
     app.run(host="0.0.0.0", port=5000)
