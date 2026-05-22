@@ -1,4 +1,3 @@
-# mlops-kbnt-prediction
 Machine Learning Pipeline using GitHub Actions
 Project Title
 Flight Duration Prediction System using MLOps Pipeline with GitHub Actions
