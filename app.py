@@ -12,11 +12,11 @@ model = joblib.load("models/model.pkl")
 def home():
 
     return """
-    <h1>Flight Duration Prediction API</h1>
+    <h1>Test Flight Duration Prediction API</h1>
 
     <form action="/predict" method="post">
 
-        <label>Distance Travelled (KM):</label><br><br>
+        <label>Test Distance Travelled (KM):</label><br><br>
 
         <input type="number" name="distance" required><br><br>
 
