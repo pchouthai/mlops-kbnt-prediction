@@ -12,11 +12,11 @@ model = joblib.load("models/model.pkl")
 def home():
 
     return """
-    <h1>Test Flight Duration Prediction API</h1>
+    <h1 style="color:blue;"> Flight Duration Prediction API</h1>
 
     <form action="/predict" method="post">
 
-        <label>Test Distance Travelled (KM):</label><br><br>
+        <label>Distance Travelled (KM):</label>
 
         <input type="number" name="distance" required><br><br>
 
@@ -42,13 +42,17 @@ def predict():
         predicted_hours = float(prediction[0])
 
         return f"""
-        <h2>Predicted Flight Duration</h2>
+        <h1 style="color:blue;">Flight Duration Prediction Result</h1>
 
-        <p>Distance: {distance} KM</p>
+        <hr>
 
-        <p>Estimated Time: {round(predicted_hours, 2)} Hours</p>
+        <p><b>Distance Travelled:</b> {distance} KM</p>
 
-        <a href="/">Try Again</a>
+        <p><b>Estimated Flight Duration:</b> {round(predicted_hours, 2)} Hours</p>
+
+        <br>
+
+        <a href="/">Predict Another Flight</a>
         """
 
     except Exception as e:
